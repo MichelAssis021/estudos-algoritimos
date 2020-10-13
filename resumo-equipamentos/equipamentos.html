@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <h1><span id="porcentagemConect"></span> Conectados</h1>
+        <h3>Quantidade</h3>
+        <span id="conectados"></span>
+
+    </div>
+    <hr>
+    <div>
+        <h1>Desconectados</h1>
+        <h3>Quantidade</h3>
+        <span id="desconectados"></span>
+    </div>
+    <hr>
+    <div>
+        <h1>Dormindo</h1>
+        <h3>Quantidade</h3>
+        <span id="dormindo"></span>
+    </div>
+    <hr>
+    <div>
+        <h1>Sem GPS</h1>
+        <h3>Quantidade</h3>
+        <span id="sem_gps"></span>
+    </div>
+    <hr>
+    <div>
+        <h1>Ligados</h1>
+        <h3>Quantidade</h3>
+        <span id="ligados"></span>
+    </div>
+
+    <script src="./equipamentos.js"></script>
+
+    <script>
+
+        var totalDesc = 0;
+        var totalConect = 0;
+        var totalDormindo = 0;
+        var totalSemGps = 0;
+        var totalLigado = 0;
+        var mostrarPorcentagem = 50;
+
+        for (let i = 0; i < equipamentos.length; i++) {
+            totalDesc += parseInt(equipamentos[i].desconectado)
+            totalConect += parseInt(equipamentos[i].conectado)
+            totalDormindo += parseInt(equipamentos[i].dormindo)
+            totalSemGps += parseInt(equipamentos[i].sem_gps)
+            totalLigado += parseInt(equipamentos[i].ligado)
+        }
+
+
+        colocarValorStatus("conectados", totalConect)
+        colocarValorStatus("desconectados", totalDesc)
+        colocarValorStatus("dormindo", totalDormindo)
+        colocarValorStatus("sem_gps", totalSemGps)
+        colocarValorStatus("ligados", totalLigado)
+
+        colocarValorStatus("porcentagemConect", "95%")
+
+        function colocarValorStatus(status, valor) {
+            document.querySelector("#" + status).innerHTML = valor;
+        }
+    </script>
+</body>
+
+</html>
